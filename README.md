@@ -1,1 +1,0 @@
-# perpuskabgowa.github.io
