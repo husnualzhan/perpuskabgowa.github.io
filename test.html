@@ -1,0 +1,120 @@
+<section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto gap-6 grid grid-cols-1 my-32 xl:grid-cols-6 ">
+
+    <div class="col-span-1 xl:col-span-3 xl:row-span-2 rounded-lg overflow-hidden shadow-md relative bg-gray-100">
+        <img
+            src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80"
+            alt="Ilustrasi membaca buku di perpustakaan"
+            loading="lazy"
+            class="w-full h-[36vh] xl:h-full object-cover object-center"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent flex flex-col justify-end p-8 text-white">
+            <h2 class="text-lg md:text-xl xl:text-2xl font-bold leading-snug tracking-tight xl:max-w-[40ch] xl:text-balance ">
+                Jelajahi Dunia Pengetahuan di Perpustakaan Gowa
+            </h2>
+            <p class="mt-1 text-xs md:text-sm text-gray-200 line-clamp-2 overflow-hidden text-balance xl:h-[10%]">
+                Temukan koleksi buku, majalah, dan e-book yang bisa kamu akses kapan pun.
+            </p>
+            <div class="mt-3 flex items-center gap-2">
+                <a href="#koleksi" class="inline-flex items-center px-3 py-1.5 rounded-md bg-white text-black font-medium text-sm shadow-sm hover:shadow transition">
+                    Mulai Membaca →
+                </a>
+                <a href="#info" class="text-xs text-white/75 underline hover:text-white ml-4">Tata cara mendaftar</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-span-1 xl:col-span-3 relative"
+         x-data="{ 
+             activeSlide: 0, 
+             totalSlides: 2, // Sesuaikan dengan jumlah total kartu
+             next() { 
+                 this.activeSlide = (this.activeSlide + 1) % this.totalSlides; 
+                 this.$refs.carousel.scrollLeft = this.activeSlide * this.$refs.carousel.children[0].offsetWidth;
+             }, 
+             prev() { 
+                 this.activeSlide = (this.activeSlide - 1 + this.totalSlides) % this.totalSlides; 
+                 this.$refs.carousel.scrollLeft = this.activeSlide * this.$refs.carousel.children[0].offsetWidth;
+             } 
+         }">
+        
+        <div x-ref="carousel" 
+             class="md:grid md:grid-cols-1 xl:grid-cols-1 md:gap-6 
+                    flex overflow-x-auto snap-x snap-mandatory 
+                    md:overflow-x-visible md:snap-none 
+                    scrollbar-hide">
+            
+            <article class="flex-shrink-0 w-full snap-center md:flex-shrink md:w-auto mb-6 md:mb-0 bg-white rounded-lg shadow-sm hover:shadow-md transition overflow-hidden" aria-labelledby="a1">
+                <div class="md:flex items-center">
+                    <div class="md:flex-1 p-6">
+                        <time class="block text-xs text-gray-500">5 November 2025</time>
+                        <h3 id="a1" class="mt-1 text-base md:text-lg font-semibold leading-snug text-gray-900">
+                            Membaca Buku Fisik vs Digital: Mana yang Lebih Efektif?
+                        </h3>
+                        <p class="mt-2 text-xs md:text-sm text-gray-700 max-w-prose">
+                            Buku fisik memberikan pengalaman sensorik; e-book menawarkan kemudahan akses. Pelajari kelebihan tiap format supaya kamu bisa memilih sesuai kebutuhan.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <a href="#" class="inline-flex px-3 py-1.5 text-sm font-medium rounded-md border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300">Baca</a>
+                            <span class="text-xs text-gray-500">— 3 menit</span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[220px] h-[190px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80"
+                            alt="Buku fisik dan e-book"
+                            loading="lazy"
+                            class="w-full h-full object-cover object-center" />
+                    </div>
+                </div>
+            </article>
+
+            <article class="flex-shrink-0 w-full snap-center md:flex-shrink md:w-auto mb-6 md:mb-0 bg-white rounded-lg shadow-sm hover:shadow-md transition overflow-hidden" aria-labelledby="a2">
+                <div class="md:flex items-center">
+                    <div class="md:flex-1 p-6">
+                        <time class="block text-xs text-gray-500">5 November 2025</time>
+                        <h3 id="a2" class="mt-1 text-base md:text-lg font-semibold leading-snug text-gray-900">
+                            Tips Memaksimalkan Waktu Membaca di Tengah Kesibukan
+                        </h3>
+                        <p class="mt-2 text-xs md:text-sm text-gray-700 max-w-prose">
+                            Temukan cara-cara praktis untuk menyisipkan kegiatan membaca ke dalam jadwal harianmu yang padat tanpa merasa terbebani.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <a href="#" class="inline-flex px-3 py-1.5 text-sm font-medium rounded-md border border-gray-200 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-300">Baca</a>
+                            <span class="text-xs text-gray-500">— 4 menit</span>
+                        </div>
+                    </div>
+
+                    <div class="md:w-[220px] h-[190px] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1544947953-cd827d00f730?auto=format&fit=crop&w=600&q=80"
+                            alt="Orang membaca di tengah kesibukan"
+                            loading="lazy"
+                            class="w-full h-full object-cover object-center" />
+                    </div>
+                </div>
+            </article>
+
+        </div>
+        
+        <div class="flex justify-center gap-3 mt-4 md:hidden">
+            <template x-for="i in totalSlides" :key="i">
+                <button 
+                    @click="activeSlide = i - 1; $refs.carousel.scrollLeft = (i - 1) * $refs.carousel.children[0].offsetWidth"
+                    class="w-2.5 h-2.5 rounded-full transition-colors duration-300"
+                    :class="{'bg-gray-900': activeSlide === i - 1, 'bg-gray-300': activeSlide !== i - 1}"
+                    :aria-label="'Go to slide ' + i">
+                </button>
+            </template>
+        </div>
+        
+    </div>
+
+</section>
+        <section class="min-h-[50dvh] my-64 flex bg-black text-white">
+            <div class="basis-[40%] overflow-hidden">
+                <img src="https://www.ub.ac.id/wp-content/uploads/2016/11/perpus-001.jpg" alt="" class="w-full h-full object-center object-cover ">
+            </div>
+            <div class=" col-span-3  px-12 py-16 max-w-4xl">
+                <h1 class="text-5xl text-bold mb-6">Tentang Perpustakan dan Kearsipan Kabupaten Gowa</h1>
+                <p class="text-lg ">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusantium, inventore. Hic perferendis dolorem culpa ut dignissimos, est fuga nemo reiciendis eius aperiam cupiditate vitae omnis pariatur reprehenderit nihil mollitia. Fuga rerum enim accusamus perspiciatis accusantium molestias eligendi eveniet veritatis cumque ad impedit nesciunt at reprehenderit dignissimos maiores provident distinctio, cupiditate expedita tempora consequatur sit, alias sed sapiente! Corrupti, cupiditate nam quidem illum excepturi reiciendis culpa temporibus tempore possimus placeat animi dolorum cumque ab necessitatibus, molestiae nesciunt earum dolore. Aperiam, fugiat?</p>
+            </div>
+        </section>

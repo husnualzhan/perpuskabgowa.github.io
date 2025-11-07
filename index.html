@@ -7,9 +7,19 @@
      <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
      <script src="https://kit.fontawesome.com/26d8d3b5e2.js" crossorigin="anonymous"></script>
      <link rel="preconnect" href="https://fonts.googleapis.com">
+     <title>Dinas Perpustakaan dan Kearsipan Kabupaten Gowa </title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/e/e6/New_Coat_of_Arms_of_Gowa.png">
     <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <style>
+    /* Sembunyikan scrollbar di wrapper untuk tampilan yang lebih rapi */
+        .slide-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+        .slide-wrapper {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
         html {
             scroll-behavior: smooth;
         }
@@ -27,203 +37,980 @@
   </head>
   <body >
 
-    <div class="mx-auto bg-white shadow-xl min-h-[300vh]">
+    <div class="mx-auto  bg-slate-50  overflow-hidden">
         
-        <header class="relative transform" x-data="stickyHeader()"> 
+        <header class="relative transform" x-data="stickyHeader()">
+
+    <div
+        x-data="{ scrollY: 0, scale: 1.05 }"
+        x-init="window.addEventListener('scroll', () => { scrollY = window.scrollY; scale = Math.min(1.05 + (scrollY / 1000), 1.2); })"
+        class="relative h-[80dvh] overflow-hidden will-change-transform"
+    >
+        <div
+            class="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out smooth-behavior will-change-transform"
+            :style="`background-image: url('https://cdn1-production-images-kly.akamaized.net/HKpXUxBZghd83ixhafdGtiB0BiI=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4228623/original/077659000_1668592687-WhatsApp_Image_2022-11-16_at_15.01.07.jpeg'); transform: scale(${scale});`"
+        ></div>
+
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-black/30 to-black/70 opacity-100"
+        ></div>
+
+        <div class="relative z-10 text-white p-6 md:p-12 h-full flex flex-col items-center justify-center text-center">
+            <h1 class="text-3xl md:text-5xl font-extrabold text-balance max-w-5xl tracking-tight">
+                Dinas Perpustakaan dan Kearsipan Kabupaten gowa 
+            </h1>
+            <p class="mt-4 text-sm md:text-xl text-gray-200 text-balance max-w-4xl">
+                Temukan koleksi, ikuti kegiatan, atau pinjam buku lewat aplikasi kami.
+            </p>
+
+            <div class="mt-8 w-full max-w-xl mx-auto">
+                <div class="relative">
+                    <input type="search" placeholder="Cari buku, penulis, atau ISBN..."
+                           class="bg-slate-50 block focus:bg-slate-100 w-full py-3 pl-4 pr-12 text-gray-900 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none transitio-all shadow-lg"
+                    />
+                    <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-indigo-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-8 flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#koleksi" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-semibold rounded-lg shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 transition transform hover:scale-105">
+                    Telusuri Koleksi
+                </a>
+                <a href="#aplikasi" class="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-semibold rounded-lg shadow-lg text-white bg-transparent hover:bg-white/10 transition">
+                    pelajari lebih lanjut
+                </a>
+            </div>
+
+       
             
-            <div
-                x-data="{ scrollY: 0, scale: 1}"
-                x-init="window.addEventListener('scroll', () => { scrollY = window.scrollY; scale = 1 + (scrollY / 500); })"
-                class="relative h-[80dvh] overflow-hidden will-change-transform" 
-                >
-                <div
-                    class="absolute inset-0 bg-cover bg-center transition-transform duration-100 ease-out smooth-behavior will-change-transform"
-                    :style="`background-image: url('https://cdn1-production-images-kly.akamaized.net/HKpXUxBZghd83ixhafdGtiB0BiI=/1200x675/smart/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/4228623/original/077659000_1668592687-WhatsApp_Image_2022-11-16_at_15.01.07.jpeg'); transform: scale(${scale});`"
-                ></div>
-
-                <div
-                    class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black opacity-100"
-                ></div>
-
-                <div class="relative z-10 text-white p-12 h-full flex items-center justify-center">
-                    <h1 class="text-4xl font-bold text-center">Hero Banner: Zoom Background & Statis Fade</h1>
-                </div>
             </div>
+    </div>
 
-            <div 
-                x-data="{ open: false }" 
-                :class="{ 
-                    'fixed top-0 left-0 right-0 mx-auto will-change-contents': $data.isPastHero, 
-                    /* 👆 PERBAIKAN: Tambahkan will-change-contents saat fixed */
-                    'relative will-change-contents': !$data.isPastHero,
-                    /* 👆 PERBAIKAN: Tambahkan will-change-contents juga saat relative */
-                    'shadow-lg': $data.isPastHero 
-                }"  
-                class="bg-black text-slate-200 w-full duration-300 transition-all z-50">
+    <div
+        x-data="{ open: false }"
+        :class="{
+            'fixed top-0 left-0 right-0 mx-auto will-change-contents': $data.isPastHero,
+            'relative will-change-contents': !$data.isPastHero,
+            'shadow-lg': $data.isPastHero
+        }"
+        class="bg-black text-slate-200 w-full duration-300 transition-all z-50">
 
-                <nav id="navbar" class="px-4 py-8 container xl:max-w-[1200px] mx-auto z-10">
-                    
-                    <div class="flex justify-between items-center">
-                        <a href="#" class="flex justify-center gap-4 text-xl font-bold">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/LOGO-PERPUSNAS.svg/1501px-LOGO-PERPUSNAS.svg.png" alt="" class="h-10 w-10 object-cover">
-                            <small class="font-[Epilogue] capitalize">Perpustakaan wilayah <br> Kabupaten gowa</small>
-                        </a>
+        <nav id="navbar" class="px-4 py-4 md:py-8 container xl:max-w-[1200px] mx-auto z-10">
+            <div class="flex justify-between items-center">
+                <a href="#" class="flex items-center gap-4 text-xl font-bold">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/New_Coat_of_Arms_of_Gowa.png" alt="" class="h-10 w-10 object-cover">
+                    <span class="font-[Epilogue] capitalize text-sm md:text-base leading-tight">Dinas Perpustakaan dan <br>Kearsipan Kabupaten Gowa</span>
+                </a>
 
-                        <div class="hidden md:flex items-center">
-                            <a href="#" class="mx-3 hover:text-indigo-500">Beranda</a>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="hover:text-indigo-500">Beranda</a>
 
-                            <div x-data="{ openProfil: false }" @click.outside="openProfil = false" class="relative mx-3">
-                                <button @click="openProfil = !openProfil" class="hover:text-indigo-500 focus:outline-none flex items-center cursor-pointer">
-                                    Profil 
-                                    <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': openProfil}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div x-show="openProfil" 
-                                        x-transition:enter="transition ease-out duration-100"
-                                        x-transition:enter-start="transform opacity-0 scale-95"
-                                        x-transition:enter-end="transform opacity-100 scale-100"
-                                        x-transition:leave="transition ease-in duration-75"
-                                        x-transition:leave-start="transform opacity-100 scale-100"
-                                        x-transition:leave-end="transform opacity-0 scale-95"
-                                        class="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 z-20 left-1/2 transform -translate-x-1/2"> 
-                                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white" role="menuitem">Sejarah</a>
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white" role="menuitem">Visi & Misi</a>
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white" role="menuitem">Struktur Organisasi</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div x-data="{ openLayanan: false }" @click.outside="openLayanan = false" class="relative mx-3">
-                                <button @click="openLayanan = !openLayanan" class="hover:text-indigo-500 focus:outline-none flex items-center cursor-pointer">
-                                    Layanan
-                                    <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': openLayanan}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div x-show="openLayanan"
-                                        x-transition:enter="transition ease-out duration-100"
-                                        x-transition:enter-start="transform opacity-0 scale-95"
-                                        x-transition:enter-end="transform opacity-100 scale-100"
-                                        x-transition:leave="transition ease-in duration-75"
-                                        x-transition:leave-start="transform opacity-100 scale-100"
-                                        x-transition:leave-end="transform opacity-0 scale-95"
-                                        class="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 z-20 left-1/2 transform -translate-x-1/2"> 
-                                    <div class="py-1">
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Peminjaman</a>
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Keanggotaan</a>
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Kunjungan</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div x-data="{ openAktifitas: false }" @click.outside="openAktifitas = false" class="relative mx-3">
-                                <button @click="openAktifitas = !openAktifitas" class="hover:text-indigo-500 focus:outline-none flex items-center cursor-pointer">
-                                    Aktifitas
-                                    <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': openAktifitas}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <div x-show="openAktifitas"
-                                        x-transition:enter="transition ease-out duration-100"
-                                        x-transition:enter-start="transform opacity-0 scale-95"
-                                        x-transition:enter-end="transform opacity-100 scale-100"
-                                        x-transition:leave="transition ease-in duration-75"
-                                        x-transition:leave-start="transform opacity-100 scale-100"
-                                        x-transition:leave-end="transform opacity-0 scale-95"
-                                        class="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 z-20 left-1/2 transform -translate-x-1/2"> 
-                                    <div class="py-1">
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Acara</a>
-                                        <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Berita</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button @click="open = !open" class="md:hidden focus:outline-none">
-                            <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                            <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                    </div>
-                </nav>
-
-                <div x-show="open" 
-                    @click.away="open = false" 
-                    x-transition:enter="transition ease-out duration-300"
-                    x-transition:enter-start="opacity-0 scale-y-0"
-                    x-transition:enter-end="opacity-100 scale-y-100"
-                    x-transition:leave="transition ease-in duration-200"
-                    x-transition:leave-start="opacity-100 scale-y-100"
-                    x-transition:leave-end="opacity-0 scale-y-0"
-                    class="md:hidden bg-gray-900 origin-top absolute top-full left-0 right-0 py-2 border-t border-gray-700">
-                    
-                    <a href="#" class="block px-4 py-2 text-slate-200 hover:bg-gray-800">Beranda</a>
-
-                    <div x-data="{ mobileProfilOpen: false }">
-                        <button @click="mobileProfilOpen = !mobileProfilOpen" class="w-full text-left px-4 py-2 text-slate-200 hover:bg-gray-800 flex justify-between items-center">
+                    <div x-data="{ openProfil: false }" @click.outside="openProfil = false" class="relative">
+                        <button @click="openProfil = !openProfil" class="hover:text-indigo-500 focus:outline-none flex items-center cursor-pointer">
                             Profil
-                            <svg class="w-4 h-4 transition-transform duration-200" :class="{'rotate-180': mobileProfilOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': openProfil}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="mobileProfilOpen" class="pl-8 bg-gray-950">
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Sejarah</a>
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Visi & Misi</a>
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Struktur Organisasi</a>
+                        <div x-show="openProfil"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="transform opacity-100 scale-100"
+                             x-transition:leave-end="transform opacity-0 scale-95"
+                             class="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 z-20 left-1/2 transform -translate-x-1/2">
+                            <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white" role="menuitem">Sejarah</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white" role="menuitem">Struktur Organisasi</a>
+                            </div>
                         </div>
                     </div>
-                    <div x-data="{ mobileLayananOpen: false }">
-                        <button @click="mobileLayananOpen = !mobileLayananOpen" class="w-full text-left px-4 py-2 text-slate-200 hover:bg-gray-800 flex justify-between items-center">
-                            Layanan
-                            <svg class="w-4 h-4 transition-transform duration-200" :class="{'rotate-180': mobileLayananOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+
+                    <div x-data="{ openLaporan: false }" @click.outside="openLaporan = false" class="relative font-[Noto_Sans]">
+                        <button @click="openLaporan = !openLaporan" class="hover:text-indigo-500 focus:outline-none flex items-center cursor-pointer">
+                            Laporan
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': openLaporan}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="mobileLayananOpen" class="pl-8 bg-gray-950">
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Peminjaman</a>
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Keanggotaan</a>
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Kunjungan</a>
-                            
+                        <div x-show="openLaporan"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="transform opacity-100 scale-100"
+                             x-transition:leave-end="transform opacity-0 scale-95"
+                             class="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 z-20 left-1/2 transform -translate-x-1/2">
+                            <div class="py-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Survei</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Hasil survei kepuasan layanan</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Data perpustakaan</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">keanggotaan</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Pengunjung</a>
+                            </div>
                         </div>
                     </div>
-                    <div x-data="{ mobileAktifitasOpen: false }">
-                        <button @click="mobileAktifitasOpen = !mobileAktifitasOpen" class="w-full text-left px-4 py-2 text-slate-200 hover:bg-gray-800 flex justify-between items-center">
+
+                    <div x-data="{ openAktifitas: false }" @click.outside="openAktifitas = false" class="relative">
+                        <button @click="openAktifitas = !openAktifitas" class="hover:text-indigo-500 focus:outline-none flex items-center cursor-pointer">
                             Aktifitas
-                            <svg class="w-4 h-4 transition-transform duration-200" :class="{'rotate-180': mobileAktifitasOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            <svg class="w-4 h-4 ml-1 transition-transform duration-200" :class="{'rotate-180': openAktifitas}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                         </button>
-                        <div x-show="mobileAktifitasOpen" class="pl-8 bg-gray-950">
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Acara</a>
-                            <a href="#" class="block px-4 py-6 text-sm text-slate-300 hover:bg-gray-800">Berita</a>
+                        <div x-show="openAktifitas"
+                             x-transition:enter="transition ease-out duration-100"
+                             x-transition:enter-start="transform opacity-0 scale-95"
+                             x-transition:enter-end="transform opacity-100 scale-100"
+                             x-transition:leave="transition ease-in duration-75"
+                             x-transition:leave-start="transform opacity-100 scale-100"
+                             x-transition:leave-end="transform opacity-0 scale-95"
+                             class="absolute mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 z-20 left-1/2 transform -translate-x-1/2">
+                            <div class="py-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Acara</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-slate-200 hover:bg-gray-700 hover:text-white">Berita</a>
+                            </div>
                         </div>
                     </div>
-                    
+                </div>
+
+                <button @click="open = !open" class="md:hidden focus:outline-none">
+                    <svg x-show="!open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    <svg x-show="open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div x-show="open"
+             @click.away="open = false"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-y-0"
+             x-transition:enter-end="opacity-100 scale-y-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 scale-y-100"
+             x-transition:leave-end="opacity-0 scale-y-0"
+             class="md:hidden bg-gray-900 origin-top absolute top-full left-0 right-0 py-2 border-t border-gray-700">
+
+            <a href="#" class="block px-4 py-2 text-slate-200 hover:bg-gray-800">Beranda</a>
+
+            <div x-data="{ mobileProfilOpen: false }">
+                <button @click="mobileProfilOpen = !mobileProfilOpen" class="w-full text-left px-4 py-2 text-slate-200 hover:bg-gray-800 flex justify-between items-center">
+                    Profil
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="{'rotate-180': mobileProfilOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="mobileProfilOpen" class="pl-8 bg-gray-950">
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Sejarah</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Visi & Misi</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Struktur Organisasi</a>
                 </div>
             </div>
-        </header>
+
+            <div x-data="{ mobileLaporanOpen: false }">
+                <button @click="mobileLaporanOpen = !mobileLaporanOpen" class="w-full text-left px-4 py-2 text-slate-200 hover:bg-gray-800 flex justify-between items-center">
+                    Laporan
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="{'rotate-180': mobileLaporanOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="mobileLaporanOpen" class="pl-8 bg-gray-950">
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Survei</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Hasil Survei Kepuasan Layanan</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Data Perpustakaan</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">keanggotaan</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Pengunjung</a>
+                </div>
+            </div>
+
+            <div x-data="{ mobileAktifitasOpen: false }">
+                <button @click="mobileAktifitasOpen = !mobileAktifitasOpen" class="w-full text-left px-4 py-2 text-slate-200 hover:bg-gray-800 flex justify-between items-center">
+                    Aktifitas
+                    <svg class="w-4 h-4 transition-transform duration-200" :class="{'rotate-180': mobileAktifitasOpen}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div x-show="mobileAktifitasOpen" class="pl-8 bg-gray-950">
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Acara</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-slate-300 hover:bg-gray-800">Berita</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
         
-        <main class="mt-[20vh] mx-auto xl:max-w-[1200px] container">
-                 
-        </main>
+       <main class="   relative overflow-hidden  mx-auto  font-[Noto_Sans] text-sm  text-gray-800">
+  <section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16 bg-white">
+    <div class="bg-indigo-700 text-white p-8 md:p-12 rounded-xl shadow-2xl">
+
+        <div class="text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3">📱 Layanan Digital Genggaman Anda</h2>
+            <p class="text-indigo-100 text-lg md:text-xl font-medium">
+                **Pinjam tanpa antre — aktifkan notifikasi untuk pengingat pengembalian.**
+            </p>
+        </div>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <div class="text-center p-4">
+                <div class="inline-block p-3 bg-indigo-600 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.47 9.58 5 8 5c-3.314 0-6 2.686-6 6v7a4 4 0 004 4h4.5a3.5 3.5 0 003.5-3.5V13"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Peminjaman Online</h3>
+                <p class="text-indigo-200 text-sm">Pesan dan *booking* buku fisik dari mana saja, siap diambil saat Anda tiba.</p>
+            </div>
+            
+            <div class="text-center p-4">
+                <div class="inline-block p-3 bg-indigo-600 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.836 3.58a6 6 0 01-2.924 3.32M13.5 8H7.5M10.5 11H7.5M13.5 14H7.5M4 18h16a2 2 0 002-2V8a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Perpanjangan Mudah</h3>
+                <p class="text-indigo-200 text-sm">Perpanjang masa pinjam langsung dari ponsel Anda tanpa perlu datang ke lokasi.</p>
+            </div>
+
+            <div class="text-center p-4">
+                <div class="inline-block p-3 bg-indigo-600 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.16 6.357 6 8.8 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Notifikasi Cepat</h3>
+                <p class="text-indigo-200 text-sm">Dapatkan pengingat tanggal pengembalian dan notifikasi denda (jika ada) langsung di ponsel.</p>
+            </div>
+
+            <div class="text-center p-4">
+                <div class="inline-block p-3 bg-indigo-600 rounded-full mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.47 9.58 5 8 5c-3.314 0-6 2.686-6 6v7a4 4 0 004 4h4.5a3.5 3.5 0 003.5-3.5V13c0-3.314 2.686-6 6-6 1.58 0 2.832.47 4 1.253"></path></svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-2">Baca E-Book Gratis</h3>
+                <p class="text-indigo-200 text-sm">Akses ribuan koleksi buku digital kapan pun dan di mana pun melalui aplikasi.</p>
+            </div>
+
+        </div>
+
+        <div class="mt-12 flex flex-col items-center md:flex-row md:justify-center md:space-x-12 p-6 bg-indigo-600 rounded-lg">
+            
+            <div class="text-center md:text-left mb-6 md:mb-0">
+                <h3 class="text-2xl font-bold mb-2">Unduh Aplikasi Sekarang!</h3>
+                <p class="text-indigo-200 mb-4">Tersedia untuk Android dan iOS di toko aplikasi resmi.</p>
+                
+                <a href="#unduh-aplikasi" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-bold rounded-lg shadow-sm text-indigo-700 bg-white hover:bg-gray-100 transition">
+                    Unduh Aplikasi GowaBaca →
+                </a>
+            </div>
+
+            <div class="flex space-x-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 bg-white p-1 rounded-lg">
+                        
+                    </div>
+                    <p class="mt-2 text-sm font-semibold">Android</p>
+                </div>
+                
+                <div class="flex flex-col items-center">
+                    <div class="w-24 h-24 bg-white p-1 rounded-lg">
+                        
+                    </div>
+                    <p class="mt-2 text-sm font-semibold">iOS</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16" x-data="{ activeTab: 'Terbaru' }">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">📚 Koleksi Unggulan</h2>
+
+    <div class="flex flex-wrap gap-2 md:gap-4 border-b border-gray-200 mb-8">
+        <button
+            @click="activeTab = 'Terbaru'"
+            :class="{ 'border-indigo-600 text-indigo-600': activeTab === 'Terbaru', 'border-transparent text-gray-500 hover:text-gray-700': activeTab !== 'Terbaru' }"
+            class="px-3 py-2 text-sm font-medium border-b-2 transition duration-150 ease-in-out focus:outline-none"
+        >
+            Terbaru
+        </button>
+        <button
+            @click="activeTab = 'Dipinjam'"
+            :class="{ 'border-indigo-600 text-indigo-600': activeTab === 'Dipinjam', 'border-transparent text-gray-500 hover:text-gray-700': activeTab !== 'Dipinjam' }"
+            class="px-3 py-2 text-sm font-medium border-b-2 transition duration-150 ease-in-out focus:outline-none"
+        >
+            Paling Dipinjam
+        </button>
+        <button
+            @click="activeTab = 'Rekomendasi'"
+            :class="{ 'border-indigo-600 text-indigo-600': activeTab === 'Rekomendasi', 'border-transparent text-gray-500 hover:text-gray-700': activeTab !== 'Rekomendasi' }"
+            class="px-3 py-2 text-sm font-medium border-b-2 transition duration-150 ease-in-out focus:outline-none"
+        >
+            Rekomendasi Staf
+        </button>
+        <button
+            @click="activeTab = 'E-Book'"
+            :class="{ 'border-indigo-600 text-indigo-600': activeTab === 'E-Book', 'border-transparent text-gray-500 hover:text-gray-700': activeTab !== 'E-Book' }"
+            class="px-3 py-2 text-sm font-medium border-b-2 transition duration-150 ease-in-out focus:outline-none"
+        >
+            E-Book
+        </button>
+    </div>
+
+    <div x-show="activeTab === 'Terbaru'" class="space-y-4">
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 
+                    flex md:grid overflow-x-auto snap-x snap-mandatory md:overflow-x-visible md:snap-none scrollbar-hide">
+            
+            <div class="w-full flex-shrink-0 snap-start bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl">
+                <div class="relative h-48 md:h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1544947953-cd827d00f730?auto=format&fit=crop&w=300&q=80"
+                         alt="Sampul Buku 1" class="w-full h-full object-cover" />
+                    <template x-if="true"> <div class="absolute top-2 right-2 p-1 bg-indigo-600/90 rounded-full text-white" title="Tersedia E-Book">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.47 9.58 5 8 5c-3.314 0-6 2.686-6 6v7a4 4 0 004 4h4.5a3.5 3.5 0 003.5-3.5V13"></path></svg>
+                        </div>
+                    </template>
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-semibold text-gray-900 line-clamp-2 min-h-[3rem]">Bumi Gowa dan Transformasi Sosial</h4>
+                    <p class="text-xs text-gray-500 mt-1 line-clamp-1">Dr. Hasanuddin G.H.</p>
+                    <a href="#" class="mt-3 block w-full text-center text-xs py-1.5 border border-indigo-500 text-indigo-600 rounded hover:bg-indigo-50 transition">
+                        Detail
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 snap-start bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl">
+                <div class="relative h-48 md:h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1593346917637-2938a1656096?auto=format&fit=crop&w=300&q=80"
+                         alt="Sampul Buku 2" class="w-full h-full object-cover" />
+                    <template x-if="false"> 
+                        <div class="absolute top-2 right-2 p-1 bg-indigo-600/90 rounded-full text-white" title="Tersedia E-Book">
+                            </div>
+                    </template>
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-semibold text-gray-900 line-clamp-2 min-h-[3rem]">Filosofi Hidup Masyarakat Bugis</h4>
+                    <p class="text-xs text-gray-500 mt-1 line-clamp-1">Prof. A. Mattulada</p>
+                    <a href="#" class="mt-3 block w-full text-center text-xs py-1.5 border border-indigo-500 text-indigo-600 rounded hover:bg-indigo-50 transition">
+                        Detail
+                    </a>
+                </div>
+            </div>
+
+            <div class="w-full flex-shrink-0 snap-start bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl">
+                <div class="relative h-48 md:h-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=300&q=80"
+                         alt="Sampul Buku 3" class="w-full h-full object-cover" />
+                    <template x-if="true"> 
+                        <div class="absolute top-2 right-2 p-1 bg-indigo-600/90 rounded-full text-white" title="Tersedia E-Book">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.47 9.58 5 8 5c-3.314 0-6 2.686-6 6v7a4 4 0 004 4h4.5a3.5 3.5 0 003.5-3.5V13"></path></svg>
+                        </div>
+                    </template>
+                </div>
+                <div class="p-3">
+                    <h4 class="text-sm font-semibold text-gray-900 line-clamp-2 min-h-[3rem]">Strategi Pemasaran Era Digital</h4>
+                    <p class="text-xs text-gray-500 mt-1 line-clamp-1">Siti Khadijah</p>
+                    <a href="#" class="mt-3 block w-full text-center text-xs py-1.5 border border-indigo-500 text-indigo-600 rounded hover:bg-indigo-50 transition">
+                        Detail
+                    </a>
+                </div>
+            </div>
+            
+            </div>
+        
+        <div class="text-center pt-4">
+            <a href="#katalog" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition">
+                Lihat Semua Koleksi Terbaru →
+            </a>
+        </div>
+    </div>
+    
+    <div x-show="activeTab === 'Dipinjam'" class="text-center p-8 bg-gray-50 rounded-lg">
+        <p class="text-gray-600">Daftar buku paling banyak dipinjam akan ditampilkan di sini.</p>
+    </div>
+
+    <div x-show="activeTab === 'Rekomendasi'" class="text-center p-8 bg-gray-50 rounded-lg">
+        <p class="text-gray-600">Rekomendasi buku pilihan staf perpustakaan.</p>
+    </div>
+    
+    <div x-show="activeTab === 'E-Book'" class="text-center p-8 bg-gray-50 rounded-lg">
+        <p class="text-gray-600">Koleksi E-Book yang dapat dipinjam secara digital.</p>
+    </div>
+    
+</section>
+    <section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Bagaimana Cara Meminjam Buku?</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+
+        <div class="bg-indigo-50 p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-indigo-600">
+            <h3 class="text-2xl font-bold text-indigo-700 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                Pinjam Lewat Aplikasi
+            </h3>
+            <p class="text-gray-600 mb-6">Nikmati kemudahan peminjaman digital. Hemat waktu, pantau status pinjaman di mana saja.</p>
+
+            <ol class="space-y-4">
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-indigo-600 text-white font-bold rounded-full mr-3">1</span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Cek Ketersediaan</p>
+                        <p class="text-sm text-gray-700">Cari buku melalui katalog di aplikasi 'GowaBaca'.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-indigo-600 text-white font-bold rounded-full mr-3">2</span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Pesan (Booking)</p>
+                        <p class="text-sm text-gray-700">Pesan buku yang tersedia untuk diambil (maksimal 24 jam).</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-indigo-600 text-white font-bold rounded-full mr-3">3</span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Ambil di Perpustakaan</p>
+                        <p class="text-sm text-gray-700">Tunjukkan kode booking Anda di loket pengambilan.</p>
+                    </div>
+                </li>
+                <li class="flex items-start">
+                    <span class="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-indigo-600 text-white font-bold rounded-full mr-3">4</span>
+                    <div>
+                        <p class="font-semibold text-gray-900">Baca dan Kembalikan</p>
+                        <p class="text-sm text-gray-700">Dapatkan notifikasi pengingat pengembalian otomatis.</p>
+                    </div>
+                </li>
+            </ol>
+            
+            <div class="mt-8">
+                <a href="#unduh-aplikasi" class="inline-flex items-center justify-center w-full px-6 py-3 border border-transparent text-base font-semibold rounded-lg shadow-md text-white bg-indigo-600 hover:bg-indigo-700 transition">
+                    Mulai di Aplikasi →
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-gray-50 p-6 md:p-8 rounded-xl shadow-lg border-t-4 border-gray-900">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Datang Langsung
+            </h3>
+            <p class="text-gray-600 mb-6">Nikmati pengalaman membaca di tempat yang nyaman dan temukan koleksi arsip yang tidak tersedia online.</p>
+
+            <div class="space-y-4">
+                <div class="border-b pb-3">
+                    <h4 class="font-semibold text-gray-900">Syarat Keanggotaan</h4>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mt-1 space-y-1">
+                        <li>Warga Negara Indonesia.</li>
+                        <li>Memiliki KTP/Kartu Pelajar/Kartu Mahasiswa.</li>
+                        <li>Mengisi formulir pendaftaran di loket layanan.</li>
+                    </ul>
+                </div>
+                
+                <div class="border-b pb-3">
+                    <h4 class="font-semibold text-gray-900">Dokumen yang Dibawa</h4>
+                    <ul class="list-disc pl-5 text-sm text-gray-700 mt-1 space-y-1">
+                        <li>Fotokopi KTP/Kartu Identitas.</li>
+                        <li>Pas Foto 3x4 (2 lembar).</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-gray-900">Jam Layanan Perpustakaan</h4>
+                    <p class="text-sm text-gray-700 mt-1">
+                        Senin - Jumat: **08.00 - 16.00 WITA**
+                        <br>
+                        Sabtu: **08.00 - 12.00 WITA**
+                        <br>
+                        Minggu/Hari Libur Nasional: **Tutup**
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <a href="#info" class="inline-flex items-center justify-center w-full px-6 py-3 border border-gray-900 text-base font-semibold rounded-lg shadow-md text-gray-900 bg-transparent hover:bg-gray-200 transition">
+                    Lihat Jam & Rute →
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8">📰 Berita & Kegiatan Terbaru</h2>
+
+    <div class="grid grid-cols-1 gap-12 md:grid-cols-3">
+
+        <div class="md:col-span-2">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">Kabar Terbaru</h3>
+
+            <div class="flex items-start mb-6 border-b pb-4">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=150&h=100&q=80"
+                     alt="Ilustrasi kegiatan perpustakaan"
+                     class="w-28 h-20 object-cover object-center rounded-lg flex-shrink-0 mr-4" />
+                <div class="flex-1">
+                    <time class="block text-xs text-indigo-600 mb-1">10 November 2025</time>
+                    <a href="#" class="text-lg font-semibold text-gray-900 hover:text-indigo-600 transition line-clamp-2">
+                        Perpustakaan Gowa Gelar Workshop Literasi Digital untuk UMKM Lokal
+                    </a>
+                    <p class="text-sm text-gray-600 line-clamp-2 mt-1">
+                        Kegiatan ini bertujuan memberdayakan pelaku usaha mikro kecil dan menengah dalam memanfaatkan platform digital untuk pemasaran.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-start mb-6 border-b pb-4">
+                <img src="https://images.unsplash.com/photo-1543269865-cbe42617781b?auto=format&fit=crop&w=150&h=100&q=80"
+                     alt="Ilustrasi peluncuran aplikasi"
+                     class="w-28 h-20 object-cover object-center rounded-lg flex-shrink-0 mr-4" />
+                <div class="flex-1">
+                    <time class="block text-xs text-indigo-600 mb-1">3 November 2025</time>
+                    <a href="#" class="text-lg font-semibold text-gray-900 hover:text-indigo-600 transition line-clamp-2">
+                        Aplikasi Pinjam Buku "GowaBaca" Diluncurkan dengan Fitur Baru
+                    </a>
+                    <p class="text-sm text-gray-600 line-clamp-2 mt-1">
+                        Versi terbaru aplikasi menyediakan integrasi katalog arsip daerah dan notifikasi pengembalian otomatis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex items-start mb-6 border-b pb-4">
+                <img src="https://images.unsplash.com/photo-1583345229288-665a3964998d?auto=format&fit=crop&w=150&h=100&q=80"
+                     alt="Ilustrasi kunjungan sekolah"
+                     class="w-28 h-20 object-cover object-center rounded-lg flex-shrink-0 mr-4" />
+                <div class="flex-1">
+                    <time class="block text-xs text-indigo-600 mb-1">28 Oktober 2025</time>
+                    <a href="#" class="text-lg font-semibold text-gray-900 hover:text-indigo-600 transition line-clamp-2">
+                        Kunjungan Siswa SD Tumbuhkan Minat Baca Sejak Dini
+                    </a>
+                    <p class="text-sm text-gray-600 line-clamp-2 mt-1">
+                        Ratusan siswa dari tiga sekolah dasar di Kabupaten Gowa mengunjungi perpustakaan untuk sesi mendongeng interaktif.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center md:text-left">
+                <a href="#berita-arsip" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gray-900 hover:bg-indigo-600 transition">
+                    Lihat Semua Berita →
+                </a>
+            </div>
+
+        </div>
+
+        <div class="md:col-span-1 mt-8 md:mt-0">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4 border-b pb-2">📅 Kalender Kegiatan</h3>
+
+            <div class="space-y-4">
+                
+                <div class="flex items-start p-3 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="flex-shrink-0 text-center mr-3 p-2 bg-indigo-100 text-indigo-600 rounded-md">
+                        <span class="block text-xl font-bold leading-none">20</span>
+                        <span class="block text-xs uppercase leading-none">Nov</span>
+                    </div>
+                    <div>
+                        <a href="#" class="text-sm font-semibold text-gray-900 hover:text-indigo-600 line-clamp-2">
+                            Pelatihan Penulisan Kreatif Fiksi Pendek
+                        </a>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Aula Utama, 09.00 - 12.00 WITA
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex items-start p-3 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="flex-shrink-0 text-center mr-3 p-2 bg-indigo-100 text-indigo-600 rounded-md">
+                        <span class="block text-xl font-bold leading-none">28</span>
+                        <span class="block text-xs uppercase leading-none">Nov</span>
+                    </div>
+                    <div>
+                        <a href="#" class="text-sm font-semibold text-gray-900 hover:text-indigo-600 line-clamp-2">
+                            Diskusi Buku "Sejarah Gowa Abad ke-17"
+                        </a>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Ruang Diskusi Lantai 2, 14.00 WITA
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start p-3 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition">
+                    <div class="flex-shrink-0 text-center mr-3 p-2 bg-indigo-100 text-indigo-600 rounded-md">
+                        <span class="block text-xl font-bold leading-none">5</span>
+                        <span class="block text-xs uppercase leading-none">Des</span>
+                    </div>
+                    <div>
+                        <a href="#" class="text-sm font-semibold text-gray-900 hover:text-indigo-600 line-clamp-2">
+                            Pameran Arsip Daerah & Koleksi Langka
+                        </a>
+                        <p class="text-xs text-gray-500 mt-1">
+                            Lobby Utama, Sepanjang Hari
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center md:text-left">
+                <a href="#kalender-event" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-gray-900 transition">
+                    Daftar Event →
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">📚 Artikel Pilihan Kami</h2>
+    <p class="text-lg text-gray-600 mb-10 text-center max-w-3xl mx-auto">
+        Dapatkan tips, ulasan, dan panduan praktis terbaru dari tim perpustakaan untuk meningkatkan literasi dan proses penelitian Anda.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd57?auto=format&fit=crop&w=600&h=300&q=80"
+                 alt="Tips Membaca Cepat" class="w-full h-40 object-cover" />
+            <div class="p-5 flex flex-col flex-grow">
+                <span class="text-xs font-semibold uppercase text-indigo-600 mb-2">Tips & Trik</span>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 flex-grow">
+                    5 Teknik Membaca Cepat dan Efektif untuk Mahasiswa
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                    Pelajari cara meningkatkan kecepatan membaca tanpa mengorbankan pemahaman. Terapkan metode *skimming* dan *scanning* yang tepat.
+                </p>
+                <a href="#" class="mt-auto text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">
+                    Baca Selengkapnya →
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1516979187457-63973c5a606e?auto=format&fit=crop&w=600&h=300&q=80"
+                 alt="Ulasan Buku Sejarah Lokal" class="w-full h-40 object-cover" />
+            <div class="p-5 flex flex-col flex-grow">
+                <span class="text-xs font-semibold uppercase text-teal-600 mb-2">Ulasan Buku</span>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 flex-grow">
+                    Resensi Buku: "Jejak Raja Gowa" dan Kebangkitan Lokal
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                    Ulasan mendalam tentang karya terbaru yang membahas peran historis tokoh-tokoh penting dalam Kerajaan Gowa.
+                </p>
+                <a href="#" class="mt-auto text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">
+                    Baca Selengkapnya →
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1531538644594-c752c0353b6f?auto=format&fit=crop&w=600&h=300&q=80"
+                 alt="Memilih Sumber Referensi" class="w-full h-40 object-cover" />
+            <div class="p-5 flex flex-col flex-grow">
+                <span class="text-xs font-semibold uppercase text-pink-600 mb-2">Penelitian</span>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 flex-grow">
+                    Panduan 2024: Cara Memilih Sumber Referensi Skripsi yang Valid
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                    Pelajari kriteria untuk membedakan jurnal ilmiah, arsip resmi, dan sumber daya online yang kredibel dari yang tidak.
+                </p>
+                <a href="#" class="mt-auto text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">
+                    Baca Selengkapnya →
+                </a>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition duration-300 overflow-hidden flex flex-col">
+            <img src="https://images.unsplash.com/photo-1549673410-fb8d9753e1a8?auto=format&fit=crop&w=600&h=300&q=80"
+                 alt="Koleksi Arsip Digital" class="w-full h-40 object-cover" />
+            <div class="p-5 flex flex-col flex-grow">
+                <span class="text-xs font-semibold uppercase text-orange-600 mb-2">Kearsipan</span>
+                <h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2 flex-grow">
+                    Mengenal Lebih Dekat Koleksi Arsip Digital Kabupaten Gowa
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                    Langkah-langkah mudah untuk mengakses dan memanfaatkan koleksi arsip bersejarah Gowa untuk kebutuhan penelitian Anda.
+                </p>
+                <a href="#" class="mt-auto text-indigo-600 font-semibold text-sm hover:text-indigo-800 transition">
+                    Baca Selengkapnya →
+                </a>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="text-center mt-12">
+        <a href="#blog" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-gray-900 hover:bg-indigo-600 transition">
+            Lihat Semua Artikel di Blog Kami →
+        </a>
+    </div>
+</section>
+<section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">❓ Pertanyaan Umum (FAQ)</h2>
+
+    <div class="max-w-4xl mx-auto space-y-4">
+
+        <div x-data="{ open: false }" class="border border-gray-200 rounded-lg shadow-md overflow-hidden">
+            <button @click="open = !open" 
+                    class="w-full text-left p-4 md:p-5 bg-white hover:bg-gray-50 flex justify-between items-center transition duration-200">
+                <span class="font-semibold text-lg text-gray-800">Berapa biaya untuk menjadi anggota perpustakaan?</span>
+                <svg class="w-5 h-5 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 max-h-0"
+                 x-transition:enter-end="opacity-100 max-h-screen"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 max-h-screen"
+                 x-transition:leave-end="opacity-0 max-h-0"
+                 class="px-4 md:px-5 pb-4 md:pb-5 text-gray-700 bg-gray-50 border-t"
+                 style="overflow: hidden;">
+                <p>Pendaftaran keanggotaan **Dinas Perpustakaan dan Kearsipan Kabupaten Gowa tidak dipungut biaya (gratis)**. Anda hanya perlu membawa dokumen persyaratan (KTP/Kartu Pelajar/Mahasiswa) dan mengisi formulir pendaftaran.</p>
+            </div>
+        </div>
+
+        <div x-data="{ open: false }" class="border border-gray-200 rounded-lg shadow-md overflow-hidden">
+            <button @click="open = !open" 
+                    class="w-full text-left p-4 md:p-5 bg-white hover:bg-gray-50 flex justify-between items-center transition duration-200">
+                <span class="font-semibold text-lg text-gray-800">Berapa lama durasi peminjaman buku dan berapa jumlah maksimal buku yang bisa dipinjam?</span>
+                <svg class="w-5 h-5 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 max-h-0"
+                 x-transition:enter-end="opacity-100 max-h-screen"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 max-h-screen"
+                 x-transition:leave-end="opacity-0 max-h-0"
+                 class="px-4 md:px-5 pb-4 md:pb-5 text-gray-700 bg-gray-50 border-t"
+                 style="overflow: hidden;">
+                <p>Durasi pinjam standar adalah **7 hari (satu minggu)**. Setiap anggota dapat meminjam maksimal **3 eksemplar** buku fisik pada satu waktu. Peminjaman dapat diperpanjang satu kali melalui aplikasi atau loket layanan.</p>
+            </div>
+        </div>
+
+        <div x-data="{ open: false }" class="border border-gray-200 rounded-lg shadow-md overflow-hidden">
+            <button @click="open = !open" 
+                    class="w-full text-left p-4 md:p-5 bg-white hover:bg-gray-50 flex justify-between items-center transition duration-200">
+                <span class="font-semibold text-lg text-gray-800">Apakah ada denda jika terlambat mengembalikan buku?</span>
+                <svg class="w-5 h-5 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 max-h-0"
+                 x-transition:enter-end="opacity-100 max-h-screen"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 max-h-screen"
+                 x-transition:leave-end="opacity-0 max-h-0"
+                 class="px-4 md:px-5 pb-4 md:pb-5 text-gray-700 bg-gray-50 border-t"
+                 style="overflow: hidden;">
+                <p>Ya. Denda keterlambatan adalah **Rp 500,- (lima ratus rupiah) per hari per eksemplar**. Denda dapat dibayarkan di loket layanan saat pengembalian buku.</p>
+            </div>
+        </div>
+
+        <div x-data="{ open: false }" class="border border-gray-200 rounded-lg shadow-md overflow-hidden">
+            <button @click="open = !open" 
+                    class="w-full text-left p-4 md:p-5 bg-white hover:bg-gray-50 flex justify-between items-center transition duration-200">
+                <span class="font-semibold text-lg text-gray-800">Bagaimana cara mengakses koleksi E-Book dan apakah berbayar?</span>
+                <svg class="w-5 h-5 transition-transform duration-300" :class="{'rotate-180': open}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+
+            <div x-show="open" 
+                 x-transition:enter="transition ease-out duration-300"
+                 x-transition:enter-start="opacity-0 max-h-0"
+                 x-transition:enter-end="opacity-100 max-h-screen"
+                 x-transition:leave="transition ease-in duration-200"
+                 x-transition:leave-start="opacity-100 max-h-screen"
+                 x-transition:leave-end="opacity-0 max-h-0"
+                 class="px-4 md:px-5 pb-4 md:pb-5 text-gray-700 bg-gray-50 border-t"
+                 style="overflow: hidden;">
+                <p>Akses ke semua koleksi E-Book **gratis** bagi anggota terdaftar. Anda dapat mengaksesnya melalui **aplikasi 'GowaBaca'** setelah Anda login menggunakan nomor anggota Anda. Koleksi tersedia 24/7.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="text-center mt-12">
+        <p class="text-gray-600">Punya pertanyaan lain? Hubungi kami di **(0411) 888xxx** atau kirim pesan melalui <a href="#" class="text-indigo-600 font-semibold hover:underline">halaman kontak</a>.</p>
+    </div>
+</section>
+
+<section class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto my-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">📍 Lokasi & Kontak Kami</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <div class="bg-gray-100 rounded-xl overflow-hidden shadow-xl h-96">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.5350320641666!2d119.4558520750247!3d-5.197079594770258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbe2c24c7f516a7%3A0x6b2e3c23521d9669!2sDinas%20Perpustakaan%20dan%20Kearsipan%20Kabupaten%20Gowa!5e0!3m2!1sid!2sid!4v1701072000000!5m2!1sid!2sid" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Peta Lokasi Dinas Perpustakaan dan Kearsipan Kabupaten Gowa">
+            </iframe>
+            </div>
+
+        <div class="space-y-6">
+            
+            <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-indigo-600">
+                <h3 class="text-xl font-bold text-gray-900 mb-2 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    Alamat Lengkap
+                </h3>
+                <p class="text-gray-700 text-base">RF35+597, Jl. Beringin, Tombolo, Kec. Somba Opu, Kabupaten Gowa, Sulawesi Selatan 92113</p>
+                <div class="mt-4 flex space-x-4">
+                    <a href="https://maps.google.com/?cid=15298916512068579036&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="text-sm font-semibold text-indigo-600 hover:text-indigo-800 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"></path></svg>
+                        Arahkan Saya ke Sini
+                    </a>
+                    <a href="https://maps.google.com/?cid=15298916512068579036&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" target="_blank" class="text-sm font-semibold text-gray-600 hover:text-gray-800 flex items-center">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.788v5.424a1 1 0 01-1.447.886L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Lihat Google Street View
+                    </a>
+                </div>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-teal-600">
+                <h3 class="text-xl font-bold text-gray-900 mb-2 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Jam Operasional Layanan
+                </h3>
+                <p class="text-sm text-gray-700">
+                    <strong class="font-bold">Senin - Jumat:</strong> 07.30 - 17.00 WITA (Layanan Peminjaman & Baca)
+                </p>
+                <p class="text-sm text-gray-700 mt-1">
+                    <strong class="font-bold">Sabtu - Minggu:</strong> Tutup
+                </p>
+                <p class="text-xs text-red-500 mt-2 italic">
+                    *Harap periksa pengumuman resmi untuk perubahan jadwal pada hari libur nasional.
+                </p>
+            </div>
+
+            <div class="p-6 bg-white rounded-xl shadow-lg border-l-4 border-green-600">
+                <h3 class="text-xl font-bold text-gray-900 mb-2 flex items-center">
+                    <svg class="w-5 h-5 mr-2 text-green-600" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 3.203 1.832 6.136 4.717 7.74l-.596 1.777c-.12.357.008.751.309.95.301.199.697.126 1-.168l1.67-1.336A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm3.5 12h-7a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v4a.5.5 0 01-.5.5zM12 9a.5.5 0 00-.5.5v3a.5.5 0 001 0v-3a.5.5 0 00-.5-.5z"/></svg>
+                    Layanan Cepat (WhatsApp)
+                </h3>
+                <p class="text-gray-700 text-base mb-3">
+                    Untuk pertanyaan seputar koleksi, pendaftaran, dan status pinjaman:
+                </p>
+                <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-semibold rounded-lg shadow-md text-white bg-green-600 hover:bg-green-700 transition">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 3.203 1.832 6.136 4.717 7.74l-.596 1.777c-.12.357.008.751.309.95.301.199.697.126 1-.168l1.67-1.336A9.957 9.957 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm3.5 12h-7a.5.5 0 01-.5-.5v-4a.5.5 0 01.5-.5h7a.5.5 0 01.5.5v4a.5.5 0 01-.5.5zM12 9a.5.5 0 00-.5.5v3a.5.5 0 001 0v-3a.5.5 0 00-.5-.5z"/></svg>
+                    Hubungi via WhatsApp (0812-3456-7890)
+                </a>
+                <p class="text-xs text-gray-500 mt-2">
+                    *Nomor WhatsApp hanya untuk layanan chat, tidak menerima panggilan telepon.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+       
+</main>
+
+<footer class="bg-gray-800 text-white mt-20">
+    <div class="px-4 md:px-10 xl:px-0 max-w-7xl mx-auto py-12">
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-10 border-b border-gray-700 pb-10">
+
+            <div class="col-span-2 space-y-4">
+                <h3 class="text-2xl font-bold text-indigo-400">GowaBaca</h3>
+                <p class="text-gray-400 text-sm max-w-xs">
+                    Pusat informasi, literasi, dan kearsipan terdepan di Kabupaten Gowa.
+                </p>
+
+                <div class="flex space-x-4 pt-2">
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition" title="Facebook">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.239.195 2.239.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.77l-.44 2.891h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition" title="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.321 7.21a4.234 4.234 0 00-4.234-4.234A4.234 4.234 0 007.854 9.21a4.234 4.234 0 004.234 4.234 4.234 4.234 0 004.233-4.234zm-4.322 2.657a.972.972 0 01-.972-.972.972.972 0 011.944 0 .972.972 0 01-.972.972zm4.551-3.629a1.071 1.071 0 112.142 0 1.071 1.071 0 01-2.142 0z"/></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition" title="Twitter/X">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22 4.01c-.722.321-1.49.537-2.298.636a4.212 4.212 0 001.815-2.204c-.785.467-1.653.805-2.576.983A4.212 4.212 0 0015.5 6c-2.32 0-4.212 1.892-4.212 4.212 0 .33.037.65.109.957A11.972 11.972 0 013 4.542a4.212 4.212 0 001.304 5.618 4.204 4.204 0 01-1.905-.527v.053c0 2.046 1.458 3.753 3.39 4.14a4.212 4.212 0 01-1.902.072 4.212 4.212 0 003.935 2.924c-1.446 1.135-3.266 1.815-5.26 1.815-.342 0-.678-.02-.999-.059A11.93 11.93 0 0010 20c8.535 0 13.208-7.078 13.208-13.208 0-.202-.005-.405-.013-.607a9.492 9.492 0 002.328-2.42z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-white">Navigasi Cepat</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Katalog Online</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Berita & Event</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Tentang Kami</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Hubungi Kami</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-semibold mb-4 text-white">Program Kami</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Literasi Digital</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Koleksi Arsip</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">E-Book</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition">Layanan Perpustakaan Keliling</a></li>
+                </ul>
+            </div>
+
+            <div class="col-span-2 md:col-span-1">
+                <h4 class="text-lg font-semibold mb-4 text-white">Newsletter</h4>
+                <p class="text-gray-400 text-sm mb-4">
+                    **Dapatkan update event & rekomendasi buku setiap bulan.**
+                </p>
+                <form action="#" method="POST" class="space-y-2">
+                    <input type="email" placeholder="Email Anda" required
+                           class="w-full px-3 py-2 text-gray-900 bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    <button type="submit"
+                            class="w-full px-3 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-md hover:bg-indigo-700 transition">
+                        Daftar
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <h4 class="text-sm font-semibold uppercase text-gray-500 mb-4">Mitra & Dukungan Kami</h4>
+            <div class="flex flex-wrap items-center gap-6">
+                <div class="text-gray-400 text-sm italic">
+                    [Logo Kemendikbud]
+                </div>
+                <div class="text-gray-400 text-sm italic">
+                    [Logo Pemkab Gowa]
+                </div>
+                <div class="text-gray-400 text-sm italic">
+                    [Logo Perguruan Tinggi A]
+                </div>
+                <div class="text-gray-400 text-sm italic">
+                    [Logo Perusahaan B]
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-10 pt-4 border-t border-gray-700 text-center">
+            <p class="text-sm text-gray-500">
+                &copy; <span x-data="{ year: new Date().getFullYear() }" x-text="year"></span> Dinas Perpustakaan dan Kearsipan Kabupaten Gowa. Hak Cipta Dilindungi.
+            </p>
+        </div>
+
+    </div>
+</footer>
+
 
     </div>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
     <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('stickyHeader', () => ({
-                heroHeight: 0,
-                isPastHero: false,
-                
-                init() {
-                    const heroBanner = this.$el.querySelector('div.h-\\[100dvh\\]');
-                    if (heroBanner) {
-                        this.heroHeight = heroBanner.offsetHeight;
-                    } else {
-                        this.heroHeight = window.innerHeight; 
-                    }
-                    
-                    window.addEventListener('scroll', () => this.handleScroll());
-                    this.handleScroll(); 
-                },
-
-                handleScroll() {
-                    this.isPastHero = window.scrollY > this.heroHeight;
-                }
-            }));
-        });
-    </script>
+       document.addEventListener('alpine:init', () => {
+    Alpine.data('stickyHeader', () => ({
+        // 80dvh (Hero height) * 0.85 untuk memastikan navbar fixed sebelum hero benar-benar hilang
+        // Anda bisa menyesuaikan angka 0.85 (85%) ini.
+        heroHeight: window.innerHeight * 0.8, 
+        isPastHero: false,
+        
+        init() {
+            this.updateIsPastHero();
+            window.addEventListener('scroll', () => {
+                this.updateIsPastHero();
+            });
+            window.addEventListener('resize', () => {
+                // Perbarui tinggi hero saat ukuran layar berubah (penting untuk dvh)
+                this.heroHeight = window.innerHeight * 0.8; 
+                this.updateIsPastHero();
+            });
+        },
+        
+        updateIsPastHero() {
+            // Periksa apakah scrollY melebihi 80% dari tinggi hero (h-[80dvh])
+            this.isPastHero = window.scrollY > (this.heroHeight * 0.85); 
+        }
+    }));
+});
+        
+        </script>
    
   </body>
 </html>
